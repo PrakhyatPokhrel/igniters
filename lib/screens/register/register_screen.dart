@@ -6,7 +6,6 @@ import 'package:igniters/widgets/lato_text.dart';
 import 'package:igniters/widgets/popins_text.dart';
 import 'package:igniters/widgets/rich_text.dart';
 
-
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
 
@@ -33,24 +32,25 @@ class RegisterScreen extends StatelessWidget {
                 const SizedBox(
                   height: 50,
                 ),
-                LatoText(
-                  textColor: MyColors.primary,
+                PoppinsText(
+                  color: MyColors.black,
                   text: "Be A Member Of",
                   fontsize: 36,
-                  fontWeight: FontWeight.w700,
+                  fontweight: FontWeight.w700,
                 ),
                 const SizedBox(
                   height: 17,
                 ),
-                const PoppinsText(
-                  text: "",
+                PoppinsText(
+                  text: "Our Community",
                   fontsize: 22,
                   fontweight: FontWeight.w400,
+                  color: MyColors.black,
                 ),
                 const SizedBox(
                   height: 20,
                 ),
-                Center(child: Image.asset("assets/images/logo.png")),
+                // Center(child: Image.asset("assets/images/logo.png")),
                 const SizedBox(
                   height: 20,
                 ),
