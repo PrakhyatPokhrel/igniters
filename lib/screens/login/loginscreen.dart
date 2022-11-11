@@ -23,11 +23,11 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(
                 height: 97,
               ),
-              const LatoText(
-                textColor: Color.fromARGB(255, 99, 98, 98),
+              PoppinsText(
+                color: MyColors.primary,
                 text: "LOGIN",
                 fontsize: 36,
-                fontWeight: FontWeight.w700,
+                fontweight: FontWeight.w700,
               ),
               const SizedBox(
                 height: 5,

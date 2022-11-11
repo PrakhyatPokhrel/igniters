@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:igniters/constants/MyColors.dart';
+import 'package:igniters/screens/home/homescreen.dart';
 import 'package:igniters/screens/login/loginscreen.dart';
 
 void main() {
@@ -14,8 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
-            primarySwatch: Colors.blue,
-            scaffoldBackgroundColor: MyColors.primary),
+            primarySwatch: Colors.blue, scaffoldBackgroundColor: Colors.white),
         home: const LoginScreen());
   }
 }
