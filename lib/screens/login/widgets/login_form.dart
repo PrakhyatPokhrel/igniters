@@ -33,11 +33,11 @@ class LoginForm extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const LatoText(
+          LatoText(
               text: "Mobile Number",
               fontWeight: FontWeight.w500,
               fontsize: 20,
-              textColor: Colors.black),
+              textColor: MyColors.black),
           CustomFormfield(
             validator: (value) {
               RegExp exp = RegExp(
@@ -59,11 +59,11 @@ class LoginForm extends StatelessWidget {
           const SizedBox(
             height: 15,
           ),
-          const LatoText(
+          LatoText(
               text: "Password",
               fontWeight: FontWeight.w500,
               fontsize: 20,
-              textColor: Colors.black),
+              textColor: MyColors.black),
           CustomFormfield(
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -78,12 +78,6 @@ class LoginForm extends StatelessWidget {
           const SizedBox(
             height: 9,
           ),
-          Row(mainAxisAlignment: MainAxisAlignment.end, children: const [
-            PoppinsText(
-                text: "Forget Password",
-                fontsize: 15,
-                fontweight: FontWeight.w400),
-          ]),
           const SizedBox(
             height: 15,
           ),
@@ -127,7 +121,7 @@ class LoginForm extends StatelessWidget {
                 }
                 // ignore: use_build_context_synchronously
               },
-              buttonColor: MyColors.primary,
+              buttonColor: Color.fromARGB(184, 168, 133, 52),
               textstyle: GoogleFonts.lato(
                   fontWeight: FontWeight.w700, letterSpacing: 1.59)),
           const SizedBox(height: 23),
@@ -138,7 +132,7 @@ class LoginForm extends StatelessWidget {
                 MaterialPageRoute(
                     builder: ((context) => const RegisterScreen()))),
             richtext: "Register Now",
-            richtextColor: Colors.green,
+            richtextColor: Color.fromARGB(184, 168, 133, 52),
           )
         ],
       ),

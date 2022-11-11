@@ -32,11 +32,11 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(
                 height: 17,
               ),
-              const PoppinsText(
-                text: "Please Sign In to continue",
-                fontsize: 22,
-                fontweight: FontWeight.w400,
-              ),
+              PoppinsText(
+                  text: "Please Sign In to continue",
+                  fontsize: 22,
+                  fontweight: FontWeight.w400,
+                  color: MyColors.black),
               const SizedBox(
                 height: 40,
               ),
