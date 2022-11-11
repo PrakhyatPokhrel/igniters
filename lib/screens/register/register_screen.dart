@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:igniters/constants/MyColors.dart';
-import 'package:igniters/screens/login/loginscreen.dart';
+import 'package:igniters/constants/route_constants.dart';
 import 'package:igniters/screens/register/widgets/register_form.dart';
-import 'package:igniters/widgets/lato_text.dart';
 import 'package:igniters/widgets/popins_text.dart';
 import 'package:igniters/widgets/rich_text.dart';
 
@@ -62,10 +61,8 @@ class RegisterScreen extends StatelessWidget {
                     confirmPasswordController: confirmPasswordController,
                     addressController: addressController),
                 CustomRichText(
-                    ontap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: ((context) => const LoginScreen()))),
+                    ontap: () => Navigator.popAndPushNamed(
+                        context,loginRoute),
                     text: "Already a member? ",
                     richtext: "Login Now",
                     richtextColor: Colors.green),

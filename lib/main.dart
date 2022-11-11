@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:igniters/config/routes/routes.dart';
 import 'package:igniters/constants/MyColors.dart';
 import 'package:igniters/screens/home/homescreen.dart';
 import 'package:igniters/screens/login/loginscreen.dart';
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         theme: ThemeData(
             primarySwatch: Colors.blue, scaffoldBackgroundColor: Colors.white),
+        onGenerateRoute: Routes.generateRoute,
         home: const LoginScreen());
   }
 }

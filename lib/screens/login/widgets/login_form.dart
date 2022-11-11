@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart';
 import 'package:igniters/constants/MyColors.dart';
+import 'package:igniters/constants/route_constants.dart';
 import 'package:igniters/constants/url_conatants.dart';
 import 'package:igniters/screens/mood/mood_screen.dart';
 import 'package:igniters/screens/register/register_screen.dart';
@@ -92,10 +93,8 @@ class LoginForm extends StatelessWidget {
                   final prefs = await SharedPreferences.getInstance();
                   if (data.statusCode == 200) {
                     // ignore: use_build_context_synchronously
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                            builder: ((context) => const MoodScreen())));
+                    Navigator.popAndPushNamed(
+                        context,moodRoute);
                   } else {
                     showDialog(
                       context: context,
@@ -119,10 +118,8 @@ class LoginForm extends StatelessWidget {
           const SizedBox(height: 23),
           CustomRichText(
             text: "Not Registered Yet? ",
-            ontap: () => Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: ((context) => const RegisterScreen()))),
+            ontap: () => Navigator.popAndPushNamed(
+                context,registerRoute),
             richtext: "Register Now",
             richtextColor: MyColors.primary,
           ),

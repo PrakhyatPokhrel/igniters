@@ -48,11 +48,12 @@ class MoodScreen extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                MoodBox(
-                    "Happy", 0xffffeab9, 0xffd2ae58, 'assets/gif/smile.gif'),
-                MoodBox("Sad", 0xffe9eaff, 0xff6062ad, 'assets/gif/sad.gif'),
-                MoodBox(
-                    "Stressed", 0xfffde5df, 0xffca8677, 'assets/gif/smile.gif'),
+                MoodBox("Happy", 0xffffeab9, 0xffd2ae58, 'assets/gif/smile.gif',
+                    context),
+                MoodBox("Sad", 0xffe9eaff, 0xff6062ad, 'assets/gif/sad.gif',
+                    context),
+                MoodBox("Stressed", 0xfffde5df, 0xffca8677,
+                    'assets/gif/smile.gif', context),
               ],
             ),
           ),
@@ -61,11 +62,12 @@ class MoodScreen extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                MoodBox("Fear", 0xffccfbf6, 0xff5b9c97, 'assets/gif/sad.gif'),
-                MoodBox(
-                    "Angry", 0xfffee8f2, 0xffa76788, 'assets/gif/smile.gif'),
+                MoodBox("Fear", 0xffccfbf6, 0xff5b9c97, 'assets/gif/sad.gif',
+                    context),
+                MoodBox("Angry", 0xfffee8f2, 0xffa76788, 'assets/gif/smile.gif',
+                    context),
                 MoodBox("Depressed", 0xfffceccf, 0xffcf987b,
-                    'assets/gif/smile.gif'),
+                    'assets/gif/smile.gif', context),
               ],
             ),
           ),

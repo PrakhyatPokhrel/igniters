@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:igniters/constants/route_constants.dart';
 
-Widget MoodBox(text, color, textcolor, image) {
+Widget MoodBox(text, color, textcolor, image, context) {
   return GestureDetector(
     onTap: () {
-      print("clicked");
+      Navigator.popAndPushNamed(context, homeRoute);
     },
     child: Container(
       width: 110,
