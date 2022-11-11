@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart';
 import 'package:igniters/constants/MyColors.dart';
 import 'package:igniters/constants/url_conatants.dart';
+import 'package:igniters/screens/mood/mood_screen.dart';
 import 'package:igniters/screens/register/register_screen.dart';
 import 'package:igniters/utils/services/rest_api_service.dart';
 import 'package:igniters/widgets/custom_button.dart';
@@ -130,7 +131,16 @@ class LoginForm extends StatelessWidget {
                     builder: ((context) => const RegisterScreen()))),
             richtext: "Register Now",
             richtextColor: Color.fromARGB(184, 168, 133, 52),
-          )
+          ),
+          GestureDetector(
+            onTap: (() {
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: ((context) => const MoodScreen())));
+            }),
+            child: const Text("Mood Screen"),
+          ),
         ],
       ),
     );

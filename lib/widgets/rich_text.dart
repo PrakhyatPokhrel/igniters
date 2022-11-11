@@ -26,7 +26,7 @@ class CustomRichText extends StatelessWidget {
         child: Text.rich(TextSpan(
             style: GoogleFonts.poppins(
                 fontSize: 17,
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.w400,
                 color: MyColors.black),
             text: text,
             children: [
