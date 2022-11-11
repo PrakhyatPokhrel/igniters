@@ -23,14 +23,14 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(
                 height: 97,
               ),
-              LatoText(
+              const LatoText(
                 textColor: Color.fromARGB(255, 99, 98, 98),
-                text: "Login",
+                text: "LOGIN",
                 fontsize: 36,
                 fontWeight: FontWeight.w700,
               ),
               const SizedBox(
-                height: 17,
+                height: 5,
               ),
               PoppinsText(
                   text: "Please Sign In to continue",
@@ -41,9 +41,9 @@ class LoginScreen extends StatelessWidget {
                 height: 40,
               ),
               // Center(child: Image.asset("assets/images/logo.png")),
-              const SizedBox(
-                height: 40,
-              ),
+              // const SizedBox(
+              //   height: 40,
+              // ),
               LoginForm(
                 passwordcontroller: passwordcontroller,
                 emailcontroller: emailcontroller,

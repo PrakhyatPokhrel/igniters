@@ -33,11 +33,11 @@ class LoginForm extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          LatoText(
+          PoppinsText(
               text: "Mobile Number",
-              fontWeight: FontWeight.w500,
+              fontweight: FontWeight.w500,
               fontsize: 20,
-              textColor: MyColors.black),
+              color: MyColors.black),
           CustomFormfield(
             validator: (value) {
               RegExp exp = RegExp(
@@ -57,13 +57,13 @@ class LoginForm extends StatelessWidget {
             hintText: "Enter Your Number",
           ),
           const SizedBox(
-            height: 15,
+            height: 25,
           ),
-          LatoText(
+          PoppinsText(
               text: "Password",
-              fontWeight: FontWeight.w500,
+              fontweight: FontWeight.w500,
               fontsize: 20,
-              textColor: MyColors.black),
+              color: MyColors.black),
           CustomFormfield(
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -76,10 +76,7 @@ class LoginForm extends StatelessWidget {
             hintText: "Enter Your Password",
           ),
           const SizedBox(
-            height: 9,
-          ),
-          const SizedBox(
-            height: 15,
+            height: 25,
           ),
           CustomButton(
               buttonText: "LOGIN",
@@ -122,7 +119,7 @@ class LoginForm extends StatelessWidget {
                 // ignore: use_build_context_synchronously
               },
               buttonColor: Color.fromARGB(184, 168, 133, 52),
-              textstyle: GoogleFonts.lato(
+              textstyle: GoogleFonts.poppins(
                   fontWeight: FontWeight.w700, letterSpacing: 1.59)),
           const SizedBox(height: 23),
           CustomRichText(
