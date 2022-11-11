@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:igniters/constants/MyColors.dart';
 
 class CustomRichText extends StatelessWidget {
   const CustomRichText(
@@ -23,8 +24,10 @@ class CustomRichText extends StatelessWidget {
     return GestureDetector(
         onTap: ontap,
         child: Text.rich(TextSpan(
-            style: GoogleFonts.lato(
-                color: Colors.black, fontSize: 20, fontWeight: FontWeight.w500),
+            style: GoogleFonts.poppins(
+                fontSize: 17,
+                fontWeight: FontWeight.w500,
+                color: MyColors.black),
             text: text,
             children: [
               TextSpan(text: richtext, style: TextStyle(color: richtextColor))
