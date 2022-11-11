@@ -34,11 +34,12 @@ class RegisterForm extends StatefulWidget {
 }
 
 class _RegisterFormState extends State<RegisterForm> {
+  String? district = "Kathmandu";
+  String? municipality = "Budhanilkantha Municipality";
   @override
   Widget build(BuildContext context) {
     final formkey = GlobalKey<FormState>();
-    String? district = "Kathmandu";
-    String? municipality = "Budhanilkantha Municipality";
+
     List<String> list1 = [
       "Budhanilkantha Municipality",
       "Chandragiri Municipality",
@@ -52,15 +53,6 @@ class _RegisterFormState extends State<RegisterForm> {
       "Tarakeshwor Municipality",
       "Tokha Municipality"
     ];
-    tryloop(value) {
-      for (int i = 0; i < allDistricts.length; i++) {
-        if (value == allDistricts[i]) {
-          setState(() {
-            list1 = municipalityy[i];
-          });
-        }
-      }
-    }
 
     return Form(
       key: formkey,
@@ -87,14 +79,6 @@ class _RegisterFormState extends State<RegisterForm> {
           ),
           CustomRichText(
               ontap: () {},
-              text: "Email",
-              richtext: "*",
-              richtextColor: Colors.red),
-          const SizedBox(
-            height: 15,
-          ),
-          CustomRichText(
-              ontap: () {},
               text: "Phonenumber",
               richtext: "*",
               richtextColor: Colors.red),
@@ -111,6 +95,30 @@ class _RegisterFormState extends State<RegisterForm> {
             },
             controller: widget.phoneController,
             hintText: "Please Enter phonenumber",
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          CustomRichText(
+              ontap: () {},
+              text: "Address",
+              richtext: "*",
+              richtextColor: Colors.red),
+          const SizedBox(
+            height: 15,
+          ),
+          DropdownSearch<String>(
+            items: allDistricts,
+            popupProps: const PopupPropsMultiSelection.menu(
+              showSelectedItems: true,
+              showSearchBox: true,
+            ),
+            onChanged: ((value) {
+              setState(() {
+                district = value;
+              });
+            }),
+            selectedItem: district,
           ),
           const SizedBox(
             height: 15,
@@ -156,25 +164,6 @@ class _RegisterFormState extends State<RegisterForm> {
           ),
           const SizedBox(
             height: 15,
-          ),
-          CustomRichText(
-              ontap: () {},
-              text: "Address",
-              richtext: "*",
-              richtextColor: Colors.red),
-          DropdownSearch<String>(
-            items: allDistricts,
-            popupProps: const PopupPropsMultiSelection.menu(
-              showSelectedItems: true,
-              showSearchBox: true,
-            ),
-            onChanged: ((value) {
-              setState(() {
-                district = value;
-              });
-              tryloop(value);
-            }),
-            selectedItem: "Kathmandu",
           ),
           const SizedBox(
             height: 15,

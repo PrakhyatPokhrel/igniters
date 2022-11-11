@@ -83,25 +83,19 @@ class LoginForm extends StatelessWidget {
               buttonText: "LOGIN",
               onPressed: () async {
                 if (formkey.currentState!.validate()) {
-                  StreamedResponse data = await RestAPIService()
-                      .post(APIUrl.signIn, <String, String>{
+                  Response data = await RestAPIService().post(
+                      APIUrl.signIn, <String, String>{
                     "phone": emailcontroller.text,
-                    "email": emailcontroller.text,
                     "password": passwordcontroller.text
                   });
-                  var res = await data.stream.bytesToString();
-                  var response = jsonDecode(res);
-                  print(data);
+
                   final prefs = await SharedPreferences.getInstance();
                   if (data.statusCode == 200) {
-                    print(response[0]["userid"].toString());
-                    prefs.setString("id", response[0]["userid"]);
-                    print("entered");
                     // ignore: use_build_context_synchronously
-                    // Navigator.pushReplacement(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: ((context) => const HomeScreen())));
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: ((context) => const MoodScreen())));
                   } else {
                     showDialog(
                       context: context,
@@ -119,7 +113,7 @@ class LoginForm extends StatelessWidget {
                 }
                 // ignore: use_build_context_synchronously
               },
-              buttonColor: Color.fromARGB(184, 168, 133, 52),
+              buttonColor: MyColors.primary,
               textstyle: GoogleFonts.poppins(
                   fontWeight: FontWeight.w700, letterSpacing: 1.59)),
           const SizedBox(height: 23),
@@ -130,16 +124,7 @@ class LoginForm extends StatelessWidget {
                 MaterialPageRoute(
                     builder: ((context) => const RegisterScreen()))),
             richtext: "Register Now",
-            richtextColor: Color.fromARGB(184, 168, 133, 52),
-          ),
-          GestureDetector(
-            onTap: (() {
-              Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: ((context) => const MoodScreen())));
-            }),
-            child: const Text("Mood Screen"),
+            richtextColor: MyColors.primary,
           ),
         ],
       ),

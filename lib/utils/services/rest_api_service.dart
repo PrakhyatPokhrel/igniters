@@ -10,7 +10,7 @@ class RestAPIService {
   Future<dynamic> get(String url) async {
     dynamic responseJson;
     try {
-      final response = await http.get(Uri.parse(baseURL+ url),
+      final response = await http.get(Uri.parse(baseURL + url),
           headers: {"Content-Type": "application/json"});
       responseJson = await _returnResponse(response);
     } on SocketException {
@@ -22,10 +22,15 @@ class RestAPIService {
   Future<dynamic> post(String url, body) async {
     dynamic responseJson;
     try {
-      final response = await http.post(Uri.parse(baseURL+ url),
+      print(body);
+      final response = await http.post(Uri.parse(baseURL + url),
           headers: {"Content-Type": "application/json"},
-          body: json.encode(body));
-      responseJson = await _returnResponse(response);
+          body: json.encode(
+            body,
+          ));
+      print(body);
+      print(response.body.toString());
+      return response;
     } on SocketException {
       throw FetchDataException("No Internet Exception");
     }
@@ -68,5 +73,4 @@ class RestAPIService {
             'Error occured while Communication with Server with StatusCode : ${response.statusCode}');
     }
   }
-
 }
