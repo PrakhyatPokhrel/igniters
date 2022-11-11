@@ -33,11 +33,11 @@ class LoginForm extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          LatoText(
+          PoppinsText(
               text: "Mobile Number",
-              fontWeight: FontWeight.w500,
+              fontweight: FontWeight.w500,
               fontsize: 20,
-              textColor: MyColors.black),
+              color: MyColors.black),
           CustomFormfield(
             validator: (value) {
               RegExp exp = RegExp(
@@ -59,11 +59,11 @@ class LoginForm extends StatelessWidget {
           const SizedBox(
             height: 15,
           ),
-          LatoText(
+          PoppinsText(
               text: "Password",
-              fontWeight: FontWeight.w500,
+              fontweight: FontWeight.w500,
               fontsize: 20,
-              textColor: MyColors.black),
+              color: MyColors.black),
           CustomFormfield(
             validator: (value) {
               if (value == null || value.isEmpty) {
