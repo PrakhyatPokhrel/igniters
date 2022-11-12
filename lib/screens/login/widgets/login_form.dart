@@ -97,7 +97,8 @@ class LoginForm extends StatelessWidget {
                       "fullname": jsonDecode(data.body)["fullname"],
                       "phone": jsonDecode(data.body)["phone"],
                       "createdAt": jsonDecode(data.body)["createdAt"],
-                      "accesstoken": jsonDecode(data.body)["accesstoken"],
+                      "accesstoken":
+                          jsonDecode(data.body)["accesstoken"].toString(),
                       "mood": "1",
                       "latestMood": "null"
                     };

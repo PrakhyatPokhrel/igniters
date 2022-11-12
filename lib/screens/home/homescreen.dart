@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
       child: Column(
         children: [
           addVertical(20),
-          getNav(),
+          getNav(context),
           addVertical(8),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 25),

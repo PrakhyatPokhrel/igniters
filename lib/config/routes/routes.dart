@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:igniters/constants/route_constants.dart';
+import 'package:igniters/screens/chat/chatscreen.dart';
 import 'package:igniters/screens/home/homescreen.dart';
 import 'package:igniters/screens/login/loginscreen.dart';
 import 'package:igniters/screens/mood/mood_screen.dart';
+import 'package:igniters/screens/porfile/profile.dart';
 import 'package:igniters/screens/register/register_screen.dart';
 import 'package:igniters/screens/scaffold/scaffold_frame.dart';
 import 'package:igniters/screens/todo/add_todo.dart';
@@ -25,6 +27,10 @@ class Routes {
         return _getPageRoute(const ScaffoldFrame());
       case createTodoApp:
         return _getPageRoute(AddTodo());
+      case chatRoute:
+        return _getPageRoute(const ChatScreen());
+        case profileRoute:
+        return _getPageRoute(const ProfileWidget());
     }
     return null;
   }

@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:igniters/constants/MyColors.dart';
+import 'package:igniters/constants/route_constants.dart';
 import 'package:igniters/screens/mood/widget/custom.dart';
 
-Widget getNav() {
+Widget getNav(context) {
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 25.0),
     child: Row(
@@ -33,16 +35,21 @@ Widget getNav() {
             ),
           ],
         ),
-        Container(
-          width: 70,
-          height: 70,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(25),
-          ),
-          clipBehavior: Clip.antiAliasWithSaveLayer,
-          child: Image.asset(
-            'assets/images/profile.jpg',
-            fit: BoxFit.cover,
+        InkWell(
+          onTap: () {
+            Navigator.pushNamed(context, profileRoute);
+          },
+          child: Container(
+            width: 70,
+            height: 70,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(25),
+            ),
+            clipBehavior: Clip.antiAliasWithSaveLayer,
+            child: Image.asset(
+              'assets/images/profile.jpg',
+              fit: BoxFit.cover,
+            ),
           ),
         )
       ],

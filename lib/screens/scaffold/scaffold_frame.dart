@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:igniters/constants/MyColors.dart';
+import 'package:igniters/constants/route_constants.dart';
+import 'package:igniters/screens/chat/chatscreen.dart';
 import 'package:igniters/screens/home/homescreen.dart';
 import 'package:igniters/screens/jornal/jornal.dart';
 import 'package:igniters/screens/mood/mood_screen.dart';
@@ -15,9 +17,13 @@ class ScaffoldFrame extends StatefulWidget {
 
 class _ScaffoldFrameState extends State<ScaffoldFrame> {
   var currentIndex = 0;
-  final screens = const [HomeScreen(), ToDoScreen(), Jornal()];
+  final screens = const [HomeScreen(), ToDoScreen(), Jornal(), ChatScreen()];
 
   void _tapDetector(index) {
+    if (index == 3) {
+      Navigator.pushNamed(context, chatRoute);
+      return;
+    }
     setState(() {
       currentIndex = index;
     });
