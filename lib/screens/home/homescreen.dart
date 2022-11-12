@@ -1,193 +1,268 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:igniters/constants/MyColors.dart';
+import 'package:igniters/screens/home/widgets/chart.dart';
+import 'package:igniters/screens/home/widgets/currentmood.dart';
+import 'package:igniters/screens/home/widgets/journal.dart';
+import 'package:igniters/screens/home/widgets/nav.dart';
+import 'package:igniters/screens/mood/widget/custom.dart';
+import 'package:ionicons/ionicons.dart';
 
-class HomeWidget extends StatefulWidget {
-  const HomeWidget({Key? key}) : super(key: key);
-
-  @override
-  _HomeWidgetState createState() => _HomeWidgetState();
-}
-
-class _HomeWidgetState extends State<HomeWidget> {
-  final scaffoldKey = GlobalKey<ScaffoldState>();
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: Color(0xFFD4A287),
-        endDrawer: Drawer(
-          elevation: 16,
-          child: Image.network(
-            'https://picsum.photos/seed/878/600',
-            width: 100,
-            height: 100,
-            fit: BoxFit.cover,
+    final width = MediaQuery.of(context).size.width - 80;
+
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          addVertical(20),
+          getNav(),
+          addVertical(8),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 25),
+            child: Divider(
+              thickness: 1,
+              color: Color.fromARGB(19, 97, 97, 97),
+            ),
           ),
-        ),
-        body: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.start,
+          addVertical(8),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Align(
-                      alignment: AlignmentDirectional(0, 0),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(20, 30, 0, 0),
-                        child: Text(
-                          '11th Nov, 2023',
-                          textAlign: TextAlign.start,
-                          style: TextStyle(
-                            fontFamily: 'Poppins',
-                            color: Color(0xFF454545),
-                            fontWeight: FontWeight.w600,
+                Container(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Happy Streak",
+                        style: GoogleFonts.roboto(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          color: const Color(0xffd2ae58),
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Image.asset(
+                            "assets/images/fire.png",
+                            width: 25,
+                            height: 25,
                           ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(20, 10, 0, 0),
-                      child: Text(
-                        'Good Afternoon,\nBasu ',
-                        style: TextStyle(
-                          fontFamily: 'Poppins',
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                  ],
+                          Text(
+                            "7",
+                            style: GoogleFonts.roboto(
+                              fontSize: 60,
+                              fontWeight: FontWeight.w800,
+                              color: Color(0x9BEC4343),
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(120, 30, 20, 15),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(300),
-                    child: Image.network(
-                      'https://cdn-icons-png.flaticon.com/512/149/149071.png',
-                      width: 70,
-                      height: 70,
-                      fit: BoxFit.cover,
-                    ),
+                Container(
+                  width: 130,
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                  decoration: BoxDecoration(
+                    color: MyColors.primary,
+                    borderRadius: BorderRadius.circular(18),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.baseline,
+                        textBaseline: TextBaseline.alphabetic,
+                        children: [
+                          const Icon(
+                            Ionicons.disc,
+                            color: Color(0x9BEC4343),
+                            size: 16,
+                          ),
+                          addHorizontal(3),
+                          Text(
+                            "80",
+                            style: GoogleFonts.roboto(
+                              color: Color.fromRGBO(255, 255, 255, 1),
+                              fontSize: 25,
+                              fontWeight: FontWeight.w800,
+                            ),
+                          ),
+                        ],
+                      ),
+                      addVertical(5),
+                      Text(
+                        "Silver",
+                        style: GoogleFonts.roboto(
+                          color: const Color.fromARGB(255, 255, 255, 255),
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      addVertical(10),
+                      Stack(
+                        children: [
+                          Container(
+                            clipBehavior: Clip.antiAliasWithSaveLayer,
+                            height: 10,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(7.5),
+                              color: Color.fromARGB(148, 255, 255, 255),
+                            ),
+                            child: Container(
+                              width: 120,
+                            ),
+                          ),
+                          Positioned(
+                            left: 0,
+                            top: 0,
+                            bottom: 0,
+                            right: 20,
+                            child: Container(
+                              height: 10,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(7.5),
+                                color: Color.fromARGB(255, 255, 255, 255),
+                              ),
+                              child: null,
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
                   ),
                 ),
               ],
             ),
-            Column(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Align(
-                      alignment: AlignmentDirectional(0, 0),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(20, 20, 0, 0),
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            color: Color(0xFFD8D8D8),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          alignment: AlignmentDirectional(0, 0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Column(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 10, 0, 0),
-                                    child: Text(
-                                      'Your latest status says,\nYou\'re Happy',
-                                      textAlign: TextAlign.start,
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        fontSize: 18,
-                                        letterSpacing: 1,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            10, 30, 0, 0),
-                                        child: Text(
-                                          'You should celebrate your happiness streaks.',
-                                          textAlign: TextAlign.start,
-                                          style: TextStyle(
-                                            fontFamily: 'Poppins',
-                                            fontSize: 10,
-                                            letterSpacing: 1,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              Padding(
-                                padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 35, 0, 0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Image.network(
-                                              'https://parspng.com/wp-content/uploads/2022/05/firepng.parspng.com-5.png',
-                                              width: 20,
-                                              height: 20,
-                                              fit: BoxFit.contain,
-                                            ),
-                                            SelectionArea(
-                                                child: Text(
-                                              '7',
-                                              style: TextStyle(
-                                                fontFamily: 'Poppins',
-                                                fontSize: 18,
-                                              ),
-                                            )),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+          ),
+          addVertical(8),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 25),
+            child: Divider(
+              thickness: 1,
+              color: Color.fromARGB(19, 97, 97, 97),
+            ),
+          ),
+          addVertical(8),
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25),
+                child: Text(
+                  "Current Mood",
+                  style: GoogleFonts.roboto(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          addVertical(10),
+          getCurrentMood(),
+          addVertical(40),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25),
+            child: FractionallySizedBox(
+              widthFactor: 1,
+              child: Container(
+                padding: const EdgeInsets.all(15),
+                decoration: const BoxDecoration(
+                  color: Color(0xffffffff),
+                  borderRadius: BorderRadius.all(Radius.circular(18)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color.fromARGB(10, 97, 97, 97),
+                      offset: Offset(1.0, 1.0),
+                      blurRadius: 5.0,
+                      spreadRadius: 5.0,
                     ),
                   ],
                 ),
-              ],
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Get Medicine from Chabahil.",
+                      style: GoogleFonts.roboto(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xFF333333),
+                      ),
+                    ),
+                    addVertical(10),
+                    Stack(
+                      children: [
+                        Container(
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          height: 15,
+                          width: width,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(7.5),
+                            color: const Color.fromARGB(141, 171, 194, 112),
+                          ),
+                        ),
+                        Positioned(
+                          left: 0,
+                          top: 0,
+                          bottom: 0,
+                          right: width - (width * (78 / 100)),
+                          child: Container(
+                            height: 15,
+                            width: width,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(7.5),
+                              color: Color(0xffabc270),
+                            ),
+                            child: null,
+                          ),
+                        ),
+                      ],
+                    ),
+                    addVertical(8),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          "08/10",
+                          style: GoogleFonts.roboto(
+                            color: Color.fromARGB(133, 66, 66, 66),
+                          ),
+                        ),
+                      ],
+                    ),
+                    addVertical(10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          "See More",
+                          style: GoogleFonts.roboto(
+                            color: MyColors.primary,
+                            fontSize: 15,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             ),
-          ],
-        ),
+          ),
+          addVertical(10),
+          getJournal(),
+          addVertical(10),
+          getChart(),
+          addVertical(10),
+        ],
       ),
     );
   }

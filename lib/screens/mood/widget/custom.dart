@@ -5,7 +5,7 @@ import 'package:igniters/constants/route_constants.dart';
 Widget MoodBox(text, color, textcolor, image, context) {
   return GestureDetector(
     onTap: () {
-      Navigator.popAndPushNamed(context, homeRoute);
+      Navigator.popAndPushNamed(context, scaffoldRoute);
     },
     child: Container(
       width: 110,

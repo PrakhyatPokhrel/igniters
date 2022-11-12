@@ -92,9 +92,13 @@ class LoginForm extends StatelessWidget {
 
                   final prefs = await SharedPreferences.getInstance();
                   if (data.statusCode == 200) {
-                    // ignore: use_build_context_synchronously
-                    Navigator.popAndPushNamed(
-                        context,moodRoute);
+                    // prefs.setString("acessToken", jsonDecode(data.body)['acesstoken']);
+                    if (jsonDecode(data.body)["mood"] == "1") {
+                      // ignore: use_build_context_synchronously
+                      Navigator.popAndPushNamed(context, moodRoute);
+                    } else {
+                      Navigator.popAndPushNamed(context, scaffoldRoute);
+                    }
                   } else {
                     showDialog(
                       context: context,
@@ -104,7 +108,7 @@ class LoginForm extends StatelessWidget {
                         actions: [
                           TextButton(
                               onPressed: () => (Navigator.pop(context)),
-                              child: const Text("OK"))
+                              child: const Text("Pos"))
                         ],
                       ),
                     );
@@ -118,8 +122,7 @@ class LoginForm extends StatelessWidget {
           const SizedBox(height: 23),
           CustomRichText(
             text: "Not Registered Yet? ",
-            ontap: () => Navigator.popAndPushNamed(
-                context,registerRoute),
+            ontap: () => Navigator.popAndPushNamed(context, registerRoute),
             richtext: "Register Now",
             richtextColor: MyColors.primary,
           ),

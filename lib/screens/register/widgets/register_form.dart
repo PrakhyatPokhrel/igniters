@@ -172,13 +172,12 @@ class _RegisterFormState extends State<RegisterForm> {
               buttonText: "REGISTER",
               onPressed: () async {
                 if (formkey.currentState!.validate()) {
-                  StreamedResponse check =
+                  Response check =
                       await RestAPIService().post(APIUrl.register, {
                     "phone": widget.phoneController.text,
-                    "email": widget.emailController.text,
                     "password": widget.passwordController.text,
                     "fullname": widget.nameController.text,
-                    "address": widget.addressController.text
+                    "location":district
                   });
                   if (check.statusCode == 200) {
                     // ignore: use_build_context_synchronously
