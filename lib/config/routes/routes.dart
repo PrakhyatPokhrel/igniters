@@ -5,6 +5,7 @@ import 'package:igniters/screens/login/loginscreen.dart';
 import 'package:igniters/screens/mood/mood_screen.dart';
 import 'package:igniters/screens/register/register_screen.dart';
 import 'package:igniters/screens/scaffold/scaffold_frame.dart';
+import 'package:igniters/screens/todo/add_todo.dart';
 import 'package:igniters/screens/todo/todo.dart';
 
 class Routes {
@@ -22,6 +23,8 @@ class Routes {
         return _getPageRoute(const ToDoScreen());
       case scaffoldRoute:
         return _getPageRoute(const ScaffoldFrame());
+      case createTodoApp:
+        return _getPageRoute(AddTodo());
     }
     return null;
   }

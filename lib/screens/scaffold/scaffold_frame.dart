@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:igniters/constants/MyColors.dart';
 import 'package:igniters/screens/home/homescreen.dart';
+import 'package:igniters/screens/jornal/jornal.dart';
 import 'package:igniters/screens/mood/mood_screen.dart';
 import 'package:igniters/screens/todo/todo.dart';
 import 'package:ionicons/ionicons.dart';
@@ -14,7 +15,7 @@ class ScaffoldFrame extends StatefulWidget {
 
 class _ScaffoldFrameState extends State<ScaffoldFrame> {
   var currentIndex = 0;
-  final screens = const [HomeScreen(), ToDoScreen()];
+  final screens = const [HomeScreen(), ToDoScreen(), Jornal()];
 
   void _tapDetector(index) {
     setState(() {

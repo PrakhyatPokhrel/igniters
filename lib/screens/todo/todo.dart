@@ -435,8 +435,10 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:http/http.dart';
 import 'package:igniters/constants/MyColors.dart';
+import 'package:igniters/constants/route_constants.dart';
 import 'package:igniters/constants/url_conatants.dart';
 import 'package:igniters/utils/services/rest_api_service.dart';
+import 'package:igniters/widgets/custom_button.dart';
 import 'package:igniters/widgets/popins_text.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -458,22 +460,46 @@ class _ToDoScreenState extends State<ToDoScreen> {
         children: [
           Row(
             children: [
-              Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: const [
-                    PoppinsText(
-                        text: "23th Nov,2023",
-                        fontsize: 16,
-                        fontweight: FontWeight.w300),
-                    PoppinsText(
-                        text: "Your Daily Task",
-                        fontsize: 20,
-                        fontweight: FontWeight.w700),
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Container(
+                            width: MediaQuery.of(context).size.width / 2.6,
+                            child: PoppinsText(
+                                text: "23th Nov,2023",
+                                fontsize: 16,
+                                fontweight: FontWeight.w300),
+                          ),
+                        ),
+                        PoppinsText(
+                            text: "Your Daily Task",
+                            fontsize: 20,
+                            fontweight: FontWeight.w700),
+                      ],
+                    ),
+                    SizedBox(
+                      width: 150,
+                      child: CustomButton(
+                          buttonText: "Create Daily Task",
+                          onPressed: (() {
+                            Navigator.popAndPushNamed(context, createTodoApp);
+                          }),
+                          buttonColor: MyColors.primary,
+                          textstyle: TextStyle(fontSize: 16)),
+                    )
                   ],
                 ),
               ),
             ],
+          ),
+          SizedBox(
+            height: 50,
           ),
           Expanded(
             child: FutureBuilder<Response>(
@@ -491,7 +517,7 @@ class _ToDoScreenState extends State<ToDoScreen> {
                                   ["todo"],
                             )));
                   } else {
-                    return CircularProgressIndicator();
+                    return const Center(child: CircularProgressIndicator());
                   }
                 }),
           )
@@ -528,7 +554,7 @@ class _TodoContainerState extends State<TodoContainer> {
   @override
   Widget build(BuildContext context) {
     return Card(
-        color: MyColors.primary,
+        color: Colors.white,
         child: ListTile(
             title: Text(
               widget.text,
@@ -537,6 +563,13 @@ class _TodoContainerState extends State<TodoContainer> {
                   : TextStyle(),
             ),
             trailing: Checkbox(
+                fillColor: MaterialStateProperty.resolveWith<Color>(
+                    (Set<MaterialState> states) {
+                  if (states.contains(MaterialState.disabled)) {
+                    return MyColors.primary;
+                  }
+                  return MyColors.primary;
+                }),
                 onChanged: ((value) {
                   setState(() {
                     check = true;

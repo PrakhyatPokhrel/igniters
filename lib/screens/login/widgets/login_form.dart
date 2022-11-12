@@ -92,7 +92,17 @@ class LoginForm extends StatelessWidget {
 
                   final prefs = await SharedPreferences.getInstance();
                   if (data.statusCode == 200) {
-                    // prefs.setString("acessToken", jsonDecode(data.body)['acesstoken']);
+                    Map<String, String> map = {
+                      "userid": jsonDecode(data.body)["userid"],
+                      "fullname": jsonDecode(data.body)["fullname"],
+                      "phone": jsonDecode(data.body)["phone"],
+                      "createdAt": jsonDecode(data.body)["createdAt"],
+                      "accesstoken": jsonDecode(data.body)["accesstoken"],
+                      "mood": "1",
+                      "latestMood": "null"
+                    };
+                    print(map);
+                    prefs.setString("data", jsonEncode(map));
                     if (jsonDecode(data.body)["mood"] == "1") {
                       // ignore: use_build_context_synchronously
                       Navigator.popAndPushNamed(context, moodRoute);

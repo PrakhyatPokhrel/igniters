@@ -42,6 +42,66 @@ class RestAPIService {
     return responseJson;
   }
 
+  Future<http.Response> postMood(text) async {
+    dynamic responseJson;
+    var prefs = await SharedPreferences.getInstance();
+    var data = prefs.getString("data") as String;
+    print(data);
+    var json = jsonDecode(data) as Map<String, dynamic>;
+    var userid = json["userid"].toString();
+    print(json);
+    try {
+      print(jsonEncode({"mood": text, "user_id": userid}));
+      // print(body);
+      final response = await http.post(
+          Uri.parse(
+            "http://100.101.175.52:3000/user/addmood",
+          ),
+          headers: {
+            "Content-Type": "application/json",
+            // "Authorization":
+            //     "Bearer "
+          },
+          body: jsonEncode({"mood": text, "user_id": userid}));
+      // print(body);
+      print(response.body.toString());
+      return response;
+    } on SocketException {
+      throw FetchDataException("No Internet Exception");
+    }
+    return responseJson;
+  }
+
+  Future<http.Response> postML(text) async {
+    dynamic responseJson;
+    var prefs = await SharedPreferences.getInstance();
+    var data = prefs.getString("data") as String;
+    print(data);
+    var json = jsonDecode(data) as Map<String, dynamic>;
+    var userid = json["userid"].toString();
+    print(json);
+    try {
+      print(jsonEncode({"journal": text, "user_id": userid}));
+      // print(body);
+      final response = await http.post(
+          Uri.parse(
+            "http://100.101.175.52:4000/journal/addjournal",
+          ),
+          headers: {
+            "Content-Type": "application/json",
+            // "Authorization":
+            //     "Bearer "
+          },
+          body: jsonEncode({"journal": text, "user_id": userid}));
+      // print(body);
+      print(response.body.toString());
+      return response;
+    } on SocketException {
+      throw FetchDataException("No Internet Exception");
+    }
+    return responseJson;
+  }
+
   Future<http.Response> register(String url, body) async {
     dynamic responseJson;
     try {

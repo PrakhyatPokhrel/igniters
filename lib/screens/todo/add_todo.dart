@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:igniters/constants/MyColors.dart';
+import 'package:igniters/constants/route_constants.dart';
 import 'package:igniters/constants/url_conatants.dart';
+import 'package:igniters/screens/todo/todo.dart';
 import 'package:igniters/utils/services/rest_api_service.dart';
+import 'package:igniters/widgets/custom_button.dart';
+import 'package:igniters/widgets/popins_text.dart';
 
 class AddTodo extends StatefulWidget {
   @override
@@ -25,15 +29,34 @@ class AddTodoState extends State<AddTodo> {
     return SafeArea(
       child: Scaffold(
           body: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Column(
-        children: [
-            _addTile(),
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: PoppinsText(
+                      text: "Add Daily Task",
+                      fontsize: 30,
+                      color: MyColors.primary,
+                      fontweight: FontWeight.w700),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 30,
+            ),
             Expanded(child: _listView()),
+            _addTile(),
+            SizedBox(
+              height: 30,
+            ),
             _okButton(),
-        ],
-      ),
-          )),
+          ],
+        ),
+      )),
     );
   }
 
@@ -59,7 +82,7 @@ class AddTodoState extends State<AddTodo> {
                 borderRadius: BorderRadius.circular(10),
                 borderSide: BorderSide(color: MyColors.primary)),
             // floatingLabelStyle: TextStyle(color: MyColors.primary),
-            labelText: "name${_controllers.length + 1}",
+            labelText: "Task${_controllers.length + 1}",
           ),
         );
 
@@ -84,7 +107,10 @@ class AddTodoState extends State<AddTodo> {
   }
 
   Widget _okButton() {
-    return ElevatedButton(
+    return CustomButton(
+      buttonColor: MyColors.primary,
+      buttonText: "Save",
+      textstyle: TextStyle(),
       onPressed: () async {
         String text = _controllers
             .where((element) => element.text != "")
@@ -97,12 +123,12 @@ class AddTodoState extends State<AddTodo> {
           });
         }
         final alert = AlertDialog(
-          title: Text("Count: ${_controllers.length}"),
-          content: Text(text),
+          title: Text("Success"),
+          content: Text("Daily Task Added Successfully"),
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.of(context).pop();
+                Navigator.popAndPushNamed(context, todoRoute);
               },
               child: Text("ok"),
             ),
@@ -115,7 +141,6 @@ class AddTodoState extends State<AddTodo> {
         );
         setState(() {});
       },
-      child: Text("ADD"),
     );
   }
 }

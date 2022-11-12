@@ -1,11 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart';
 import 'package:igniters/constants/route_constants.dart';
+import 'package:igniters/utils/services/rest_api_service.dart';
 
 Widget MoodBox(text, color, textcolor, image, context) {
   return GestureDetector(
-    onTap: () {
-      Navigator.popAndPushNamed(context, scaffoldRoute);
+    onTap: () async {
+      Response response = await RestAPIService().postMood(text);
+      if (response.statusCode == 200) {
+        Navigator.popAndPushNamed(context, scaffoldRoute);
+      }
     },
     child: Container(
       width: 110,
