@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:igniters/chat/chat.dart';
 import 'package:igniters/config/routes/routes.dart';
 import 'package:igniters/constants/MyColors.dart';
 import 'package:igniters/screens/home/homescreen.dart';

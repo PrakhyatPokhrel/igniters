@@ -458,18 +458,20 @@ class _ToDoScreenState extends State<ToDoScreen> {
         children: [
           Row(
             children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  PoppinsText(
-                      text: "23th Nov,2023",
-                      fontsize: 16,
-                      fontweight: FontWeight.w300),
-                  PoppinsText(
-                      text: "Your Daily Task",
-                      fontsize: 20,
-                      fontweight: FontWeight.w700),
-                ],
+              Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: const [
+                    PoppinsText(
+                        text: "23th Nov,2023",
+                        fontsize: 16,
+                        fontweight: FontWeight.w300),
+                    PoppinsText(
+                        text: "Your Daily Task",
+                        fontsize: 20,
+                        fontweight: FontWeight.w700),
+                  ],
+                ),
               ),
             ],
           ),
