@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:http/http.dart';
 import 'package:igniters/constants/MyColors.dart';
 import 'package:igniters/screens/home/widgets/chart.dart';
 import 'package:igniters/screens/home/widgets/currentmood.dart';
 import 'package:igniters/screens/home/widgets/journal.dart';
 import 'package:igniters/screens/home/widgets/nav.dart';
 import 'package:igniters/screens/mood/widget/custom.dart';
+import 'package:igniters/screens/todo/todo.dart';
+import 'package:igniters/utils/services/rest_api_service.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -14,6 +18,11 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width - 80;
+    Future<Response> streak() async {
+      var prefs=await SharedPreferences.getInstance();
+      Response data = await RestAPIService().post("", {});
+      return data;
+    }
 
     return SingleChildScrollView(
       child: Column(
@@ -54,14 +63,18 @@ class HomeScreen extends StatelessWidget {
                             width: 25,
                             height: 25,
                           ),
-                          Text(
-                            "7",
-                            style: GoogleFonts.roboto(
-                              fontSize: 60,
-                              fontWeight: FontWeight.w800,
-                              color: Color(0x9BEC4343),
-                            ),
-                          ),
+                          FutureBuilder<Response>(
+                              future: streak(),
+                              builder: (context, snapshot) {
+                                return Text(
+                                  "7",
+                                  style: GoogleFonts.roboto(
+                                    fontSize: 60,
+                                    fontWeight: FontWeight.w800,
+                                    color: Color(0x9BEC4343),
+                                  ),
+                                );
+                              }),
                         ],
                       )
                     ],

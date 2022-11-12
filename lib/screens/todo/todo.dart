@@ -488,7 +488,7 @@ class _ToDoScreenState extends State<ToDoScreen> {
                       child: CustomButton(
                           buttonText: "Create Daily Task",
                           onPressed: (() {
-                            Navigator.popAndPushNamed(context, createTodoApp);
+                            Navigator.pushNamed(context, createTodoApp);
                           }),
                           buttonColor: MyColors.primary,
                           textstyle: TextStyle(fontSize: 16)),

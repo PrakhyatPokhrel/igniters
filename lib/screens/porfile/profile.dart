@@ -40,10 +40,13 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                     children: [
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 0, 100, 0),
-                        child: Icon(
-                          Icons.west,
-                          color: Color(0xFFB8B5B5),
-                          size: 28,
+                        child: GestureDetector(
+                          onTap: (() => Navigator.pop(context)),
+                          child: Icon(
+                            Icons.west,
+                            color: Color(0xFFB8B5B5),
+                            size: 28,
+                          ),
                         ),
                       ),
                       Text(

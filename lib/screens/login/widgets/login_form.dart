@@ -93,7 +93,7 @@ class LoginForm extends StatelessWidget {
                   final prefs = await SharedPreferences.getInstance();
                   if (data.statusCode == 200) {
                     Map<String, String> map = {
-                      "userid": jsonDecode(data.body)["userid"],
+                      "userid": jsonDecode(data.body)["userid"].toString(),
                       "fullname": jsonDecode(data.body)["fullname"],
                       "phone": jsonDecode(data.body)["phone"],
                       "createdAt": jsonDecode(data.body)["createdAt"],

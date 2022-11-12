@@ -38,16 +38,16 @@ class RegisterScreen extends StatelessWidget {
                   fontweight: FontWeight.w700,
                 ),
                 const SizedBox(
-                  height: 17,
+                  height: 5,
                 ),
                 PoppinsText(
-                  text: "Our Community",
+                  text: "Deary Community",
                   fontsize: 22,
                   fontweight: FontWeight.w400,
                   color: MyColors.black,
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 // Center(child: Image.asset("assets/images/logo.png")),
                 const SizedBox(
@@ -61,8 +61,7 @@ class RegisterScreen extends StatelessWidget {
                     confirmPasswordController: confirmPasswordController,
                     addressController: addressController),
                 CustomRichText(
-                    ontap: () => Navigator.popAndPushNamed(
-                        context,loginRoute),
+                    ontap: () => Navigator.popAndPushNamed(context, loginRoute),
                     text: "Already a member? ",
                     richtext: "Login Now",
                     richtextColor: Colors.green),

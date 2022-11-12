@@ -31,6 +31,8 @@ class _ChatScreenState extends State<ChatScreen> {
         'token': jsonDecode(prefs.getString('data').toString())['accesstoken'],
       }
     });
+    var isme = jsonDecode(prefs.getString('data').toString())['userid'];
+    print(isme);
     socket.connect();
     socket.on('connect', (data) {
       print("connected!");
@@ -41,20 +43,24 @@ class _ChatScreenState extends State<ChatScreen> {
         setState(() {
           chats.add(
             Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisAlignment: (isme == data['chat'][i]['user_id'])
+                  ? MainAxisAlignment.end
+                  : MainAxisAlignment.start,
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     addVertical(5),
-                    Text(
-                      "Anonymous from " + data['chat'][i]['location'],
-                      style: GoogleFonts.roboto(
-                        fontSize: 17,
-                        fontWeight: FontWeight.w500,
-                        color: Color.fromARGB(255, 131, 131, 131),
-                      ),
-                    ),
+                    (isme != data['chat'][i]['user_id'])
+                        ? Text(
+                            "Anonymous from " + data['chat'][i]['location'],
+                            style: GoogleFonts.roboto(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w500,
+                              color: Color.fromARGB(255, 131, 131, 131),
+                            ),
+                          )
+                        : addVertical(0),
                     Container(
                       width: 250,
                       margin: const EdgeInsets.symmetric(vertical: 5),
@@ -63,7 +69,9 @@ class _ChatScreenState extends State<ChatScreen> {
                         horizontal: 20,
                       ),
                       decoration: BoxDecoration(
-                        color: Color(0xFFC0C0C0),
+                        color: (isme == data['chat'][i]['user_id'])
+                            ? MyColors.primary
+                            : Color(0xFFC0C0C0),
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: Text(
@@ -86,24 +94,79 @@ class _ChatScreenState extends State<ChatScreen> {
         });
       }
     });
+    socket.on('receive-join', (data) {
+      if (data['user_id'] != isme) {
+        setState(() {
+          members = data['members'].toString();
+          chats.add(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    addVertical(5),
+                    Text(
+                      "Anonymous from " + data['location'],
+                      style: GoogleFonts.roboto(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w500,
+                        color: Color.fromARGB(255, 131, 131, 131),
+                      ),
+                    ),
+                    Container(
+                      width: 250,
+                      margin: const EdgeInsets.symmetric(vertical: 5),
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 15,
+                        horizontal: 20,
+                      ),
+                      decoration: BoxDecoration(
+                        color: (isme == data['user_id'])
+                            ? MyColors.primary
+                            : Color(0xFFC0C0C0),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Text(
+                        data['message'],
+                        textAlign: TextAlign.left,
+                        style: GoogleFonts.roboto(
+                          fontSize: 17,
+                          fontWeight: FontWeight.w500,
+                          color: const Color(0xFFFFFFFF),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          );
+        });
+      }
+    });
     socket.on('receive-message', (data) {
       setState(() {
         chats.add(
           Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: (isme == data['user_id'])
+                ? MainAxisAlignment.end
+                : MainAxisAlignment.start,
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   addVertical(5),
-                  Text(
-                    "Anonymous from " + data['location'],
-                    style: GoogleFonts.roboto(
-                      fontSize: 17,
-                      fontWeight: FontWeight.w500,
-                      color: Color.fromARGB(255, 131, 131, 131),
-                    ),
-                  ),
+                  (isme != data['user_id'])
+                      ? Text(
+                          "Anonymous from " + data['location'],
+                          style: GoogleFonts.roboto(
+                            fontSize: 17,
+                            fontWeight: FontWeight.w500,
+                            color: Color.fromARGB(255, 131, 131, 131),
+                          ),
+                        )
+                      : addVertical(0),
                   Container(
                     width: 250,
                     margin: const EdgeInsets.symmetric(vertical: 5),
@@ -112,7 +175,9 @@ class _ChatScreenState extends State<ChatScreen> {
                       horizontal: 20,
                     ),
                     decoration: BoxDecoration(
-                      color: Color(0xFFC0C0C0),
+                      color: (isme == data['user_id'])
+                          ? MyColors.primary
+                          : Color(0xFFC0C0C0),
                       borderRadius: BorderRadius.circular(15),
                     ),
                     child: Text(

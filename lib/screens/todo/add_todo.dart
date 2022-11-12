@@ -35,13 +35,22 @@ class AddTodoState extends State<AddTodo> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: PoppinsText(
-                      text: "Add Daily Task",
-                      fontsize: 30,
-                      color: MyColors.primary,
-                      fontweight: FontWeight.w700),
+                Row(
+                  children: [
+                    IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: Icon(Icons.arrow_left_sharp)),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: PoppinsText(
+                          text: "Add Daily Task",
+                          fontsize: 30,
+                          color: MyColors.primary,
+                          fontweight: FontWeight.w700),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -128,7 +137,7 @@ class AddTodoState extends State<AddTodo> {
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.popAndPushNamed(context, todoRoute);
+                Navigator.popAndPushNamed(context, scaffoldRoute);
               },
               child: Text("ok"),
             ),
